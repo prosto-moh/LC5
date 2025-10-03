@@ -8,16 +8,228 @@
 
 		<link rel="stylesheet" href="dist/reset.css">
 		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css">
+		<link rel="stylesheet" href="dist/theme/white.css">
 
 		<!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+
+		<!-- Font awesome is used by several plugins -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+		<!-- Custom controls plugin -->
+		<script src="https://cdn.jsdelivr.net/npm/reveal.js-plugins@latest/customcontrols/plugin.js"></script>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js-plugins@latest/customcontrols/style.css">
+
+
 	</head>
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+
+
+				<section>
+					<h4>КОРРЕЛЯЦИОННЫЙ АНАЛИЗ СИГНАЛОВ </h4>
+				</section>
+				
+				<section>
+					<h4>Коэффициент взаимной корреляции сигналов (КВК)</h4>
+					<img data-src="image.png" width="300">
+					<p>
+					$ t \in [0, T_\text{c}] \qquad\qquad s_k(t) \in \left\{ s_i(t) \right\}_{i=0}^{N-1} $
+					</p>
+
+				</section>
+				
+					
+				<section>
+					$$
+					\scriptsize
+					\begin{align*}
+					s_1(t) \quad\quad  s_2(t) \quad\quad E_\Delta = \int_{-\infty}^{+\infty} \left| \Delta(t) \right|^2 dt \quad\quad \Delta(t) = s_1(t) - s_2(t)
+					\end{align*}
+					$$
+				
+
+					<p>
+						$ R_{s_1 s_2} = \int_{-\infty}^{+\infty} s_1(t) s_2^*(t) dt \\$
+
+						
+						$ R_{s_1 s_2} = R_{s_2 s_1}^* \\$
+
+						$ E_\Delta = E_{s_1} + E_{s_2} - 2 \operatorname{Re} R_{s_1 s_2} $
+					</p>
+				</section>
+
+				<section>
+					<h4>Коэффициент взаимной корреляции (КВК)</h4>
+					<p>Среди всех возможных сигналов с энергиями
+					$E_{s_1}$ и $E_{s_2}$ наиболее близки друг к другу те, для
+					которых действительная часть коэффициента
+					взаимной корреляции максимальна.</p>
+					
+				</section>
+
+
+				<section>
+					<h4>Основные свойства КВК</h4>
+					<p>
+					
+					$ R_{s_1 s_2} = \int_{-\infty}^{+\infty} s_1(t) s_2^*(t) \, dt $ <br>
+					
+					
+					
+					<span style="font-size: 0.7em;">Свойства сопряженной симметрии:</span> $\scriptsize R_{s_1 s_2} =  R^*_{s_1 s_2} $
+					
+					
+					<hr>
+					$$
+					\scriptsize
+					\begin{align*}
+					\operatorname{Re} R_{s_1 s_2} &= \operatorname{Re} R_{s_2 s_1} \\
+					\operatorname{Im} R_{s_1 s_2} &= -\operatorname{Im} R_{s_2 s_1} \\
+					|R_{s_1 s_2}| &= |R_{s_2 s_1}|
+					\end{align*}
+					$$
+					</p>
+					
+				</section>
+				
+				<section>
+					<h4> Коэффициент взаимной корреляции сигналов: коррелятор</h4>
+					<img data-src="image2.png" width="500">
+					<p>	</p>
+					
+				</section>
+				
+				<section>
+					<h4>Взаимная корреляционная функция сигналов (ВКФ)</h4>
+					<img data-src="image3.png" width="400">
+					
+				</section>
+				
+				<section>
+					<h4>Взаимная корреляционная функция сигналов (ВКФ) </h4>
+					<p>	
+						$$
+						\scriptsize
+						\begin{align*}
+						R_{s_1 s_2}(\tau_1, \tau_2) &= \int_{-\infty}^{+\infty} s_1(t - \tau_1) s_2^*(t - \tau_2) \, dt = 
+						
+						\left[ \begin{array}{l}
+						t' = t - \tau_1 \\
+						dt' = dt
+						\end{array} \right] = \\
+						
+						&= \int_{-\infty}^{+\infty} s_1(t') s_2^*(t' + \tau_1 - \tau_2) \, dt' = 
+						\int_{-\infty}^{+\infty} s_1(t') s_2^*(t' - \tau) \, dt'  \\
+						\tau &= \tau_2 - \tau_1
+						\end{align*}
+						$$
+
+
+					</p>
+					
+				</section>
+				
+				<section>
+					<h4>Основные свойства ВКФ </h4>
+					<p>
+					
+					$ R_{s_1 s_2} = \int_{-\infty}^{+\infty} s_1(t) s_2^*(t-\tau) \, dt $ <br>
+					
+					
+
+					<span style="font-size: 0.7em;">Свойства сопряженной симметрии:</span>  $\scriptsize R_{s_1 s_2}(\tau) =  R^*_{s_1 s_2}(-\tau) $
+					
+					
+					<hr>
+					$$
+					\scriptsize
+					\begin{align*}
+					\operatorname{Re} R_{s_1 s_2}(\tau) &= \operatorname{Re} R_{s_2 s_1}(-\tau) \\
+					\operatorname{Im} R_{s_1 s_2}(\tau) &= -\operatorname{Im} R_{s_2 s_1}(-\tau) \\
+					|R_{s_1 s_2}(\tau)| &= |R_{s_2 s_1}(-\tau)|
+					\end{align*}
+					$$
+					</p>
+					
+				</section>
+				
+				<section>
+					<h4>Автокорреляционная функция сигнала (АКФ) </h4>
+					$$
+					\begin{align*}
+
+					s_1(t)=s_2(t)=s(t)\\
+					R_s(\tau)=\int_{-\infty}^{\infty}s(t)s^*(t-\tau)dt
+
+					\end{align*}
+					$$
+				</section>
+				
+				<section>
+					<h4>Основные свойства AКФ</h4>
+					<p>
+					
+					$ R_{s}(\tau) = \int_{-\infty}^{+\infty} s(t) s^*(t-\tau) \, dt $ <br>
+					
+					
+					
+					<span style="font-size: 0.7em;">Свойства сопряженной симметрии:</span> $\scriptsize R_{s}(\tau) =  R^*_{s}(\tau) $
+					
+					
+					<hr>
+					$$
+					\scriptsize
+					\begin{align*}
+					\operatorname{Re} R_{s}(\tau) &= \operatorname{Re} R_{s}(-\tau) \\
+					\operatorname{Im} R_{s}(\tau) &= -\operatorname{Im} R_{s}(-\tau) \\
+					|R_{s}(\tau)| &= |R_{s}(-\tau)| \\
+					\end{align*}
+					$$
+					</p>
+
+				</section>
+				
+				<section>
+					<h4> АКФ и спектр энергии Фурье-пара</h4>
+					<p>
+						$$
+					R_S(\tau) \leftrightarrow W_S(\omega) = S(\omega) S^*(\omega) = |S(\omega)|^2		
+					$$
+						АКФ сигнала полностью определяется его
+амплитудным спектром. Поэтому все сигналы,
+имеющие одинаковые амплитудные спектры имеют
+и одинаковые АКФ. При изменении полярности
+импульсов, введении опережения/запаздывания,
+при зеркальном отражении относительно оси
+ординат АКФ не изменяется</p>
+					
+				</section>
+				
+				<section>
+					<h4> </h4>
+					<p style="font-size: 0.6em;">	
+						
+						
+						
+						$ s(t) = s_1(t) + s_2(t)  $
+						$ R_S(\tau) = \int_{-\infty}^{+\infty} s(t) s^*(t - \tau) \, dt =\\$
+						<br>
+						$= \int_{-\infty}^{+\infty} \big( s_1(t) + s_2(t) \big) \big( s_1(t - \tau) + s_2(t - \tau) \big)^* \, dt = \\ $
+						<br>
+						$= \int_{-\infty}^{+\infty} s_1(t) s_1^*(t - \tau) \, dt + \int_{-\infty}^{+\infty} s_2(t) s_2^*(t - \tau) \, dt +\\$
+						<br>
+						$+ \int_{-\infty}^{+\infty} s_1(t) s_2^*(t - \tau) \, dt + \int_{-\infty}^{+\infty} s_2(t) s_1^*(t - \tau) \, dt = \\$
+						<br>
+						$ = R_{s_1}(\tau) + R_{s_2}(\tau) + R_{s_1 s_2}(\tau) + R_{s_2 s_1}(\tau)$
+						
+						
+					</p>		
+					
+				</section>
+				
+
 			</div>
 		</div>
 
@@ -25,16 +237,25 @@
 		<script src="plugin/notes/notes.js"></script>
 		<script src="plugin/markdown/markdown.js"></script>
 		<script src="plugin/highlight/highlight.js"></script>
-		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				hash: true,
+		<script src="plugin/math/math.js"></script>
+		<script src="plugin/chalkboard/plugin.js"></script>
 
+		
+
+
+		<script>
+			
+
+			Reveal.initialize({
+				
+				hash: true, //# hash: false,
+				
 				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX, RevealCustomControls, RevealChalkboard]
 			});
+
 		</script>
+
+	
 	</body>
 </html>
